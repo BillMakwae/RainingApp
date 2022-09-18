@@ -20,3 +20,21 @@ Now that we know what our app is going to do, we can start thinking about its im
 3. Now that those systems are in place, how do we keep track of when the rain is coming? Since this is a relatively simple app that only cares about whether or not a place is raining, we can use [OpenWeatherMap's One Call Api](https://openweathermap.org/api), and feed the location of each user. Our app is relatively small (right now) so the free tier with 1000/api calls per day should suffice.
 4. What language/framework will we be using to build the client app? I personally would build this in Flutter, since it would be relatively quick, and it interplays nicely with Firebase (lots of free code snippets from google). Also, it would be cross platform, and work with iOS as well as Android with only one codebase!
 
+# Pros and Cons
+Pros with this implementation:
+- If a lot of users are in the same city, we can save money by using only one api call to check the weather. This saves us api calls and keeps us from going over our daily limit too quickly.
+- Since we are only doing api calls from the server, we can reduce the total amount of api calls made ( as opposed to each user making their own api calls)
+- Since we are only doing push notifications instead of tracking user location, we wont drain the user's battery much.
+- Requires less code since you dont have to worry about tracking
+
+Cons with this implementation:
+- If the user is not connected to the internet, they might miss the notification. (The device doesn't save weather forecasts)
+- Does not handle multiple cities/locations for each user. For students that commute, the weather in their home city may not be the same as the city that they attend school/work
+- This only gives a warning an hour in advance (which we have relativly high certainty that it will rain though the Weather Api). While this means it may be more accurate, the user might not have enough time to prepare for the rain (i.e a commuter already left home by the time they get the notification)
+- Since it is built in Flutter, newer devs unfamiliar with the frame work would take longer to implement features.
+- Relatively low amount of API calls in the free tier of OpenWeather API
+
+# Final Remarks / Improvements
+
+
+
